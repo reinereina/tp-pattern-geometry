@@ -9,10 +9,16 @@ public class CoordinateTest {
 	
 	@Test
 	public void testDefaultConstructor(){
-		// TODO
-		//Coordinate c = new Coordinate();
-		//Assert.assertEquals(0.0, c.getX(), EPSILON);
-		//Assert.assertEquals(0.0, c.getY(), EPSILON);
+		Coordinate c = new Coordinate();
+		Assert.assertEquals(0.0, c.getX(), EPSILON);
+		Assert.assertEquals(0.0, c.getY(), EPSILON);
+	}
+
+	@Test
+	public void testConstructor(){
+		Coordinate c = new Coordinate(1.0, 1.0);
+		Assert.assertEquals(1.0, c.getX(), EPSILON);
+		Assert.assertEquals(1.0, c.getY(), EPSILON);
 	}
 
 }
