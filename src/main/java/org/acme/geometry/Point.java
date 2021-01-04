@@ -26,6 +26,11 @@ public class Point implements Geometry {
         this.coordinate = new Coordinate(this.coordinate.getX() + dx, this.coordinate.getY() + dy);
     }
 
+    @Override
+    public Point clone() {
+        return new Point(this.coordinate);
+    }
+
     public Coordinate getCoordinate() {
         return coordinate;
     }

@@ -43,4 +43,13 @@ public class LineString implements Geometry {
             point.translate(dx, dy);
         }
     }
+
+    @Override
+    public LineString clone() {
+        List<Point> pointsC = new ArrayList<>();
+        for (Point point : this.points) {
+            pointsC.add(point.clone());
+        }
+        return new LineString(pointsC);
+    }
 }
