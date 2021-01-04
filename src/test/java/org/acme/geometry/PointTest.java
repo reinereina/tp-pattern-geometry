@@ -11,20 +11,27 @@ public class PointTest {
     public void testDefaultConstructor() {
         Point p = new Point();
         Coordinate c = new Coordinate();
-        Assert.assertEquals(p.getCoordinate().getX(), 0, EPSILON);
-        Assert.assertEquals(p.getCoordinate().getY(), 0, EPSILON);
+        Assert.assertEquals(Double.NaN, p.getCoordinate().getX(), EPSILON);
+        Assert.assertEquals(Double.NaN, p.getCoordinate().getY(), EPSILON);
     }
 
     @Test
     public void testConstructor() {
         Coordinate c = new Coordinate(1.0, 1.0);
         Point p = new Point(c);
-        Assert.assertEquals(p.getCoordinate(), c);
+        Assert.assertEquals(1, p.getCoordinate().getX(), EPSILON);
+        Assert.assertEquals(1, p.getCoordinate().getY(), EPSILON);
     }
 
     @Test
     public void testType() {
         Point p = new Point();
         Assert.assertEquals("Point", p.getType());
+    }
+
+    @Test
+    public void testEmpty() {
+        Point p = new Point();
+        Assert.assertTrue(p.isEmpty());
     }
 }

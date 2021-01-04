@@ -16,6 +16,11 @@ public class Point implements Geometry {
         return "Point";
     }
 
+    @Override
+    public Boolean isEmpty() {
+        return this.coordinate.isEmpty();
+    }
+
     public Coordinate getCoordinate() {
         return coordinate;
     }
