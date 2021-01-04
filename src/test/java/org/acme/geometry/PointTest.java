@@ -10,7 +10,6 @@ public class PointTest {
     @Test
     public void testDefaultConstructor() {
         Point p = new Point();
-        Coordinate c = new Coordinate();
         Assert.assertEquals(Double.NaN, p.getCoordinate().getX(), EPSILON);
         Assert.assertEquals(Double.NaN, p.getCoordinate().getY(), EPSILON);
     }
@@ -33,5 +32,13 @@ public class PointTest {
     public void testEmpty() {
         Point p = new Point();
         Assert.assertTrue(p.isEmpty());
+    }
+
+    @Test
+    public void testTranslate() {
+        Point p = new Point(new Coordinate(0, 0));
+        p.translate(1, 1);
+        Assert.assertEquals(1, p.getCoordinate().getX(), EPSILON);
+        Assert.assertEquals(1, p.getCoordinate().getY(), EPSILON);
     }
 }

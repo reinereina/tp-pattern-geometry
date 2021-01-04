@@ -11,6 +11,7 @@ public class LineString implements Geometry {
     }
 
     public LineString(List<Point> points) {
+        assert (points != null);
         this.points = points;
     }
 
@@ -29,15 +30,17 @@ public class LineString implements Geometry {
 
     @Override
     public Boolean isEmpty() {
-        if (points.isEmpty()) {
-            return true;
-        }
-
+        if (points.isEmpty()) return true;
         for (Point pt : points) {
-            if (Boolean.TRUE.equals(pt.isEmpty())) {
-                return true;
-            }
+            if (Boolean.TRUE.equals(pt.isEmpty())) return true;
         }
         return false;
+    }
+
+    @Override
+    public void translate(double dx, double dy) {
+        for (Point point : this.points) {
+            point.translate(dx, dy);
+        }
     }
 }
