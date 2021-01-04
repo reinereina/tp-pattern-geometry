@@ -1,8 +1,8 @@
 package org.acme.geometry;
 
 public class Coordinate {
-    private double x;
-    private double y;
+    private final double x;
+    private final double y;
 
     public Coordinate(){
         this.x = 0;
