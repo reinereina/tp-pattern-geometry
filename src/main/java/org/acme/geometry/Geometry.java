@@ -12,4 +12,6 @@ public interface Geometry {
     Enveloppe getEnveloppe();
 
     void accept(GeometryVisitor visitor);
+
+    void addListener(GeometryListener listener);
 }
