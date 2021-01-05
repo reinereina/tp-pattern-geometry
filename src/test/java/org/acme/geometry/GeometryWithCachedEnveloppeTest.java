@@ -57,5 +57,5 @@ public class GeometryWithCachedEnveloppeTest {
         g = new GeometryWithCachedEnveloppe(g);
         g.accept(builder);
         Assert.assertEquals(3.0, g.getEnveloppe().getXmin(), EPSILON);
+    
     }
-}
