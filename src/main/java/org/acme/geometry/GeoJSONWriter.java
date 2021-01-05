@@ -12,7 +12,7 @@ public class GeoJSONWriter implements GeometryWriter {
         if (geom instanceof Point) {
             Point point = (Point) geom;
             if (Boolean.FALSE.equals(point.isEmpty())) {
-                buffer.append("{\"type\": \"Feature\",\"geometry\": { \"type\": \"").append(point.getType()).append("\", \"coordinates\": [").append(point.getCoordinate().getX()).append(", ").append(point.getCoordinate().getY()).append("]}}");
+                buffer.append("{\"type\": \"Feature\",\"geometry\": { \"type\": \"").append(point.getType()).append("\", \"coordinates\": [").append(point.getCoordinate().getX()).append(", ").append(point.getCoordinate().getY()).append("]}}]}");
             }
         } else if (geom instanceof LineString) {
             LineString lineString = (LineString) geom;
@@ -25,7 +25,7 @@ public class GeoJSONWriter implements GeometryWriter {
                         buffer.append(",");
                     }
                 }
-                buffer.append("]");
+                buffer.append("]}}]}");
             }
         } else {
             throw new RuntimeException("Geometry type not supported");
