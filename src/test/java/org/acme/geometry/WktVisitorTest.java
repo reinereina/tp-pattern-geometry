@@ -45,4 +45,20 @@ public class WktVisitorTest {
         g.accept(visitor);
         Assert.assertEquals("LINESTRING EMPTY", visitor.getResult());
     }
+
+    @Test
+    public void testWriteGeometryCollection() {
+        List<Geometry> geom = new ArrayList<>();
+        geom.add(new Point(new Coordinate(1.0, 2.0)));
+        geom.add(new Point(new Coordinate(0.5, 1.0)));
+        GeometryCollection geometryCollection = new GeometryCollection(geom);
+        Assert.assertEquals("GEOMETRYCOLLECTION(POINT(1.0 2.0),POINT(0.5 1.0))", geometryCollection.asText());
+    }
+
+
+    @Test
+    public void testWriteEmptyGeometryCollection() {
+        AbstractGeometry g = new GeometryCollection();
+        Assert.assertEquals("GEOMETRYCOLLECTION EMPTY", g.asText());
+    }
 }

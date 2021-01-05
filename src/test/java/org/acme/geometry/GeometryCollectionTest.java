@@ -72,7 +72,7 @@ public class GeometryCollectionTest {
         geom.add(new Point(new Coordinate(0.5, 1.0)));
         GeometryCollection geometryCollection = new GeometryCollection(geom);
         geometryCollection.translate(1.0, 5.0);
-        Assert.assertEquals("GEOMETRYCOLLECTION(POINT(2.0 7.0),POINT(1.5 6.0))", ((AbstractGeometry) geometryCollection).asText());
+        Assert.assertEquals("GEOMETRYCOLLECTION(POINT(2.0 7.0),POINT(1.5 6.0))", geometryCollection.asText());
     }
 
     @Test

@@ -1,6 +1,6 @@
 package org.acme.geometry;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -37,6 +37,20 @@ public class LogGeometryVisitorTest {
         Geometry g = new LineString(points2);
 
         g.accept(visitor);
+        Assert.assertEquals(wanted, outStr.toString());
+    }
+
+    @Test
+    public void testVisitGeomCollection() {
+        String wanted = "Je suis une GeometryCollection qui contient 2 géométrie(s)";
+        ByteArrayOutputStream outStr = new ByteArrayOutputStream();
+        PrintStream out = new PrintStream(outStr);
+        LogGeometryVisitor visitor = new LogGeometryVisitor(out);
+        List<Geometry> geom = new ArrayList<>();
+        geom.add(new Point(new Coordinate(1.0, 2.0)));
+        geom.add(new Point(new Coordinate(0.5, 1.0)));
+        Geometry geometry = new GeometryCollection(geom);
+        geometry.accept(visitor);
         Assert.assertEquals(wanted, outStr.toString());
     }
 
