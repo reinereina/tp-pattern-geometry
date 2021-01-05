@@ -52,4 +52,14 @@ public class LineString implements Geometry {
         }
         return new LineString(pointsC);
     }
+
+    @Override
+    public Enveloppe getEnveloppe() {
+        List<Coordinate> coordinates = new ArrayList<>();
+        for (Point point : points) {
+            coordinates.add(point.getCoordinate());
+        }
+        EnveloppeBuilder builder = new EnveloppeBuilder(coordinates);
+        return builder.build();
+    }
 }

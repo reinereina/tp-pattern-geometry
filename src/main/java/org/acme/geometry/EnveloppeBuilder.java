@@ -15,6 +15,7 @@ public class EnveloppeBuilder {
     }
 
     public void insert(Coordinate coordinate) {
+        assert (coordinate != null);
         this.coordinates.add(coordinate);
     }
 
