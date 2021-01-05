@@ -62,4 +62,9 @@ public class LineString implements Geometry {
         EnveloppeBuilder builder = new EnveloppeBuilder(coordinates);
         return builder.build();
     }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
+    }
 }
