@@ -19,4 +19,9 @@ public class LogGeometryVisitor implements GeometryVisitor {
         this.out.print("Je suis une " + lineString.getType() + " définie par " +
                 lineString.getNumPoints() + " point(s)");
     }
+
+    public void visit(GeometryCollection geometryCollection) {
+        this.out.print("Je suis une " + geometryCollection.getType() + " qui contient " +
+                geometryCollection.getNumGeometries() + " géométrie(s)");
+    }
 }

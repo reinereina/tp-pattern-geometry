@@ -49,4 +49,11 @@ public class EnveloppeBuilder implements GeometryVisitor {
             this.insert(lineString.getPointN(i).getCoordinate());
         }
     }
+
+    @Override
+    public void visit(GeometryCollection geomC) {
+        for (int i = 0; i < geomC.getNumGeometries(); i++) {
+            geomC.getGeometryN(i).accept(this);
+        }
+    }
 }

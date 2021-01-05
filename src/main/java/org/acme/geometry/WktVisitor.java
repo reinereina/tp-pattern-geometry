@@ -33,6 +33,24 @@ public class WktVisitor implements GeometryVisitor {
         }
     }
 
+    @Override
+    public void visit(GeometryCollection geometryCollection) {
+        this.bufferString.append(geometryCollection.getType().toUpperCase());
+        if (geometryCollection.isEmpty()) {
+            this.bufferString.append(" EMPTY");
+        } else {
+            this.bufferString.append("(");
+            for (int i = 0; i < geometryCollection.getNumGeometries(); i++) {
+                AbstractGeometry g = (AbstractGeometry) geometryCollection.getGeometryN(i);
+                this.bufferString.append(g.asText());
+                if (i != geometryCollection.getNumGeometries() - 1) {
+                    this.bufferString.append(",");
+                }
+            }
+            this.bufferString.append(")");
+        }
+    }
+
     public String getResult() {
         return this.bufferString.toString();
     }
